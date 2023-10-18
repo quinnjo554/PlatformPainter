@@ -1,16 +1,15 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game() : player(playerText, Vector2f(400, 750))
 {
     // Initialize other members here if needed
 }
 
 void Game::initializeTextures(RenderWindow &window)
 {
-    //   playerText = window.loadTexture("C:\\Users\\quinn\\source\\repos\\UnderstandingSDL\\GFX\\orangeBlock.png");
+    playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
     // background = window.loadTexture("C:\\Users\\quinn\\source\\repos\\UnderstandingSDL\\GFX\\background.png");
-
-    // player.setTexture(playerText);
+    player.setTexture(playerText);
 }
 
 void Game::run()
@@ -20,7 +19,7 @@ void Game::run()
     {
         std::cout << "SDL_INIT HAS FAILED: " << SDL_GetError() << std::endl; // get error returns the last error that has occured
     }
-    if (!IMG_Init(IMG_INIT_PNG))
+    if (!IMG_Init(IMG_INIT_JPG))
     { // if you want to change file type do it here
         std::cout << "IMG_init HAS FAILED: " << SDL_GetError() << std::endl;
     }
@@ -35,8 +34,10 @@ void Game::run()
             {
                 isRunning = false;
             }
+            player.handleInput(event);
         }
         window.screenClear();
+        window.renderer(player);
         window.display();
     }
 
