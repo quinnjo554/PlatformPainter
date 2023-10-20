@@ -14,6 +14,7 @@ void Game::initializeTextures(RenderWindow &window)
 
 void Game::run()
 {
+    // change to handleinput()  render() update()
 
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
     {
@@ -28,19 +29,35 @@ void Game::run()
 
     while (isRunning)
     {
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT)
-            {
-                isRunning = false;
-            }
-            player.handleInput(event);
-        }
-        window.screenClear();
-        window.renderer(player);
-        window.display();
+        update();
+        input();
+        render(window);
     }
 
     window.cleanUp();
     SDL_Quit();
+}
+
+void Game::update()
+{
+    while (SDL_PollEvent(&event))
+    {
+        if (event.type == SDL_QUIT)
+        {
+            isRunning = false;
+        }
+        input();
+    }
+}
+
+void Game::input()
+{
+    player.handleInput(event);
+}
+
+void Game::render(RenderWindow &window)
+{
+    window.screenClear();
+    window.renderer(player);
+    window.display();
 }
