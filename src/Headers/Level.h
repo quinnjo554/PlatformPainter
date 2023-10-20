@@ -10,9 +10,6 @@ class Game
 {
 public:
     void run();
-    void update();
-    void input();
-    void render(RenderWindow &window);
     Game();
 
 private:
