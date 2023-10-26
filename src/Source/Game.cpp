@@ -8,7 +8,6 @@ Game::Game() : player(playerText, Vector2f(400, 750))
 void Game::initializeTextures(RenderWindow &window)
 {
     playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
-    // background = window.loadTexture("C:\\Users\\quinn\\source\\repos\\UnderstandingSDL\\GFX\\background.png");
     player.setTexture(playerText);
 }
 
@@ -29,9 +28,9 @@ void Game::run()
 
     while (isRunning)
     {
-        update();
-        input();
-        render(window);
+        update();       // level.update
+        input();        // level.input
+        render(window); // level.render(window)
     }
 
     window.cleanUp();
@@ -40,18 +39,17 @@ void Game::run()
 
 void Game::update()
 {
-    while (SDL_PollEvent(&event))
-    {
-        if (event.type == SDL_QUIT)
-        {
-            isRunning = false;
-        }
-        input();
-    }
 }
 
 void Game::input()
 {
+    SDL_PollEvent(&event);
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        isRunning = false;
+        break;
+    }
     player.handleInput(event);
 }
 
@@ -59,5 +57,6 @@ void Game::render(RenderWindow &window)
 {
     window.screenClear();
     window.renderer(player);
+    // level.render(window) -> this method will render the blocks, obsitcles and bg texture of the level.
     window.display();
 }

@@ -6,6 +6,7 @@
 #include "Math.h"
 #include "Player.h"
 #include "RenderWindow.h"
+#include "Level.h"
 class Game
 {
 public:
@@ -19,7 +20,7 @@ private:
     bool isRunning = true;
     SDL_Event event;
     SDL_Texture *playerText;
-    SDL_Texture *background;
     Player player;
+    Level level;
     void initializeTextures(RenderWindow &window);
 };
