@@ -21,22 +21,22 @@ void Level::dropBlock(SDL_Event &event)
     std::cout << "Mouse X: " << mouseX << ", Y: " << mouseY << std::endl;
 }
 // Getters
-std::vector<Sandblock> &Level::getSandBlocks()
+const std::vector<std::shared_ptr<Sandblock>> &Level::getSandBlocks()
 {
     return this->sandBlocks;
 }
 
-const std::vector<Stoneblock> &Level::getStoneBlocks()
+const std::vector<std::shared_ptr<Stoneblock>> &Level::getStoneBlocks()
 {
     return this->stoneBlocks;
 }
 
-const std::vector<Lavablock> &Level::getLavaBlocks()
+const std::vector<std::shared_ptr<Lavablock>> &Level::getLavaBlocks()
 {
     return lavaBlocks;
 }
 
-const std::vector<Portalblock> &Level::getPortalBlocks()
+const std::vector<std::shared_ptr<Portalblock>> &Level::getPortalBlocks()
 {
     return portalBlocks;
 }
@@ -72,26 +72,25 @@ const Player &Level::getPlayer()
 }
 
 // Setters
-void Level::setSandBlocks(const std::vector<Sandblock> &blocks)
+void Level::setSandBlocks(const std::vector<std::shared_ptr<Sandblock>> &blocks)
 {
     sandBlocks = blocks;
 }
 
-void Level::setStoneBlocks(const std::vector<Stoneblock> &blocks)
+void Level::setStoneBlocks(const std::vector<std::shared_ptr<Stoneblock>> &blocks)
 {
     stoneBlocks = blocks;
 }
 
-void Level::setLavaBlocks(const std::vector<Lavablock> &blocks)
+void Level::setLavaBlocks(const std::vector<std::shared_ptr<Lavablock>> &blocks)
 {
     lavaBlocks = blocks;
 }
 
-void Level::setPortalBlocks(const std::vector<Portalblock> &blocks)
+void Level::setPortalBlocks(const std::vector<std::shared_ptr<Portalblock>> &blocks)
 {
     portalBlocks = blocks;
 }
-
 void Level::setIsCompleted(bool completed)
 {
     isCompleted = completed;

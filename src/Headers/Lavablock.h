@@ -11,8 +11,10 @@ private:
 
 public:
     Lavablock();
-    virtual void handleInput(SDL_Event &event) = 0;
-    virtual Vector2f &getPos() = 0;
-    virtual SDL_Rect getCurrentFrame() = 0;
-    virtual SDL_Texture *getTexture() = 0;
+    void move() override;
+    bool checkCollision(SDL_Rect a, SDL_Rect b) override;
+    float getGravity() override;
+    Vector2f &getPos() override;
+    SDL_Rect getCurrentFrame() override;
+    SDL_Texture *getTexture() override;
 };

@@ -2,6 +2,8 @@
 #include <SDL.h>
 #include <iostream>
 #include <string.h>
+#include <vector>
+#include <memory>
 #include "Math.h"
 #include "Player.h"
 #include "RenderWindow.h"
@@ -9,7 +11,7 @@
 #include "Stoneblock.h"
 #include "Portalblock.h"
 #include "Lavablock.h"
-#include "vector"
+
 class Level
 {
 public:
@@ -19,10 +21,10 @@ public:
     void dropBlock(SDL_Event &event);
 
     // Getters
-    std::vector<Sandblock> &getSandBlocks();
-    const std::vector<Stoneblock> &getStoneBlocks();
-    const std::vector<Lavablock> &getLavaBlocks();
-    const std::vector<Portalblock> &getPortalBlocks();
+    const std::vector<std::shared_ptr<Sandblock>> &getSandBlocks();
+    const std::vector<std::shared_ptr<Stoneblock>> &getStoneBlocks();
+    const std::vector<std::shared_ptr<Lavablock>> &getLavaBlocks();
+    const std::vector<std::shared_ptr<Portalblock>> &getPortalBlocks();
     bool getIsCompleted();
     const Vector2f &getGoalPos();
     bool getIsRunning();
@@ -31,10 +33,10 @@ public:
     const Player &getPlayer();
 
     // Setters
-    void setSandBlocks(const std::vector<Sandblock> &blocks);
-    void setStoneBlocks(const std::vector<Stoneblock> &blocks);
-    void setLavaBlocks(const std::vector<Lavablock> &blocks);
-    void setPortalBlocks(const std::vector<Portalblock> &blocks);
+    void setSandBlocks(const std::vector<std::shared_ptr<Sandblock>> &blocks);
+    void setStoneBlocks(const std::vector<std::shared_ptr<Stoneblock>> &blocks);
+    void setLavaBlocks(const std::vector<std::shared_ptr<Lavablock>> &blocks);
+    void setPortalBlocks(const std::vector<std::shared_ptr<Portalblock>> &blocks);
     void setIsCompleted(bool completed);
     void setGoalPos(const Vector2f &pos);
     void setIsRunning(bool running);
@@ -43,10 +45,10 @@ public:
     void setPlayer(const Player &p);
 
 private:
-    std::vector<Sandblock> sandBlocks;
-    std::vector<Stoneblock> stoneBlocks;
-    std::vector<Lavablock> lavaBlocks;
-    std::vector<Portalblock> portalBlocks;
+    std::vector<std::shared_ptr<Sandblock>> sandBlocks;
+    std::vector<std::shared_ptr<Stoneblock>> stoneBlocks;
+    std::vector<std::shared_ptr<Lavablock>> lavaBlocks;
+    std::vector<std::shared_ptr<Portalblock>> portalBlocks;
     // std::vector<Enemy> enemies;      // List of enemies in the level
     // std::vector<Obstacle> obstacles; // List of obstacles in the level
     bool isCompleted;

@@ -11,11 +11,10 @@ private:
 
 public:
     Stoneblock();
-    void move();
-    bool checkCollision(SDL_Rect a, SDL_Rect b);
-    float getGravity();
-    Vector2f &getPos();
-    SDL_Rect getCurrentFrame();
+    void move() override;
+    bool checkCollision(SDL_Rect a, SDL_Rect b) override;
+    float getGravity() override;
+    Vector2f &getPos() override;
+    SDL_Rect getCurrentFrame() override;
     SDL_Texture *getTexture() override;
-    void handleInput(SDL_Event &event);
 };
