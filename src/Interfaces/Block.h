@@ -1,4 +1,6 @@
+#pragma once
 #include <iostream>
+#include <SDL.h>
 #include "Math.h"
 
 class Block
@@ -10,4 +12,4 @@ public:
     virtual Vector2f &getPos() = 0;
     virtual SDL_Rect getCurrentFrame() = 0;
     virtual SDL_Texture *getTexture() = 0;
-}
+};

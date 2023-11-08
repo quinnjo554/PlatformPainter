@@ -6,15 +6,16 @@ class Stoneblock : public Block
 private:
     SDL_Texture *texture;
     Vector2f pos;
-    SDL_Rect float gravity;
+    float gravity;
+    SDL_Rect currentFrame;
 
 public:
-    SandBlock();
-    SDL_Texture *getTexture();
+    Stoneblock();
     void move();
     bool checkCollision(SDL_Rect a, SDL_Rect b);
     float getGravity();
     Vector2f &getPos();
     SDL_Rect getCurrentFrame();
-    SDL_Texture *getTexture();
-}
+    SDL_Texture *getTexture() override;
+    void handleInput(SDL_Event &event);
+};

@@ -1,15 +1,21 @@
 #include "Stoneblock.h"
 
-Stoneblock::SandBlock()
+Stoneblock::Stoneblock()
 {
+    currentFrame.x = 0;
+    currentFrame.y = 0;
+    currentFrame.w = 46;
+    currentFrame.h = 64;
 }
 
-void Stoneblock::handleInput(SDL_Event &event){
-    this->getPos()}
+void Stoneblock::handleInput(SDL_Event &event)
+{
+    this->getPos();
+}
 
 Vector2f &Stoneblock::getPos()
 {
-    // TODO: insert return statement here
+    return this->pos;
 }
 
 SDL_Rect Stoneblock::getCurrentFrame()

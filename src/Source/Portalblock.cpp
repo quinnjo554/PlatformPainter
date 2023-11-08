@@ -1,5 +1,6 @@
-#include "Sandblock.h"
-Sandblock::Sandblock()
+#include "Portalblock.h"
+
+Portalblock::Portalblock()
 {
     currentFrame.x = 0;
     currentFrame.y = 0;

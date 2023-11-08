@@ -20,104 +20,104 @@ void Level::dropBlock(SDL_Event &event)
     // Do something with mouseX and mouseY, for example, print them
     std::cout << "Mouse X: " << mouseX << ", Y: " << mouseY << std::endl;
 }
-
-const std::vector<SandBlocks> &getSandBlocks() const
+// Getters
+std::vector<Sandblock> &Level::getSandBlocks()
 {
-    return sandBlocks;
+    return this->sandBlocks;
 }
 
-const std::vector<StoneBlocks> &getStoneBlocks() const
+const std::vector<Stoneblock> &Level::getStoneBlocks()
 {
-    return stoneBlocks;
+    return this->stoneBlocks;
 }
 
-const std::vector<LavaBlocks> &getLavaBlocks() const
+const std::vector<Lavablock> &Level::getLavaBlocks()
 {
     return lavaBlocks;
 }
 
-const std::vector<PortalBlocks> &getPortalBlocks() const
+const std::vector<Portalblock> &Level::getPortalBlocks()
 {
     return portalBlocks;
 }
 
-bool getIsCompleted() const
+bool Level::getIsCompleted()
 {
     return isCompleted;
 }
 
-const Vector2f &getGoalPos() const
+const Vector2f &Level::getGoalPos()
 {
     return goalPos;
 }
 
-bool getIsRunning() const
+bool Level::getIsRunning()
 {
     return isRunning;
 }
 
-SDL_Texture *getPlayerText() const
+SDL_Texture *Level::getPlayerText()
 {
     return playerText;
 }
 
-SDL_Texture *getBackground() const
+SDL_Texture *Level::getBackground()
 {
     return background;
 }
 
-const Player &getPlayer() const
+const Player &Level::getPlayer()
 {
     return player;
 }
 
 // Setters
-void setSandBlocks(const std::vector<SandBlocks> &blocks)
+void Level::setSandBlocks(const std::vector<Sandblock> &blocks)
 {
     sandBlocks = blocks;
 }
 
-void setStoneBlocks(const std::vector<StoneBlocks> &blocks)
+void Level::setStoneBlocks(const std::vector<Stoneblock> &blocks)
 {
     stoneBlocks = blocks;
 }
 
-void setLavaBlocks(const std::vector<LavaBlocks> &blocks)
+void Level::setLavaBlocks(const std::vector<Lavablock> &blocks)
 {
     lavaBlocks = blocks;
 }
 
-void setPortalBlocks(const std::vector<PortalBlocks> &blocks)
+void Level::setPortalBlocks(const std::vector<Portalblock> &blocks)
 {
     portalBlocks = blocks;
 }
 
-void setIsCompleted(bool completed)
+void Level::setIsCompleted(bool completed)
 {
     isCompleted = completed;
 }
 
-void setGoalPos(const Vector2f &pos)
+void Level::setGoalPos(const Vector2f &pos)
 {
     goalPos = pos;
 }
 
-void setIsRunning(bool running)
+void Level::setIsRunning(bool running)
 {
     isRunning = running;
 }
 
-void setPlayerText(SDL_Texture *text)
+void Level::setPlayerText(SDL_Texture *text)
 {
     playerText = text;
 }
 
-void setBackground(SDL_Texture *bg)
+void Level::setBackground(SDL_Texture *bg)
 {
     background = bg;
 }
 
-void setPlayer(const Player &p)
+void Level::setPlayer(const Player &p)
 {
     player = p;
 }

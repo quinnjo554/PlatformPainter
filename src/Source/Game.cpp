@@ -5,7 +5,7 @@ Game::Game() : player(playerText, Vector2f(400, 750))
     // Initialize other members here if needed
 }
 
-void Game::initializeTextures(RenderWindow &window)
+void Game::initializeTextures(RenderWindow &window)  //move to level
 {
     playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
     player.setTexture(playerText);
