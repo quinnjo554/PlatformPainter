@@ -5,15 +5,15 @@ Game::Game() : player(playerText, Vector2f(400, 750))
     // Initialize other members here if needed
 }
 
-void Game::initializeTextures(RenderWindow &window)
+void Game::initializeTextures(RenderWindow &window) // move to level
 {
     playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
-    // background = window.loadTexture("C:\\Users\\quinn\\source\\repos\\UnderstandingSDL\\GFX\\background.png");
     player.setTexture(playerText);
 }
 
 void Game::run()
 {
+    // change to handleinput()  render() update()
 
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
     {
@@ -28,19 +28,35 @@ void Game::run()
 
     while (isRunning)
     {
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT)
-            {
-                isRunning = false;
-            }
-            player.handleInput(event);
-        }
-        window.screenClear();
-        window.renderer(player);
-        window.display();
+        update();       // level.update
+        input();        // level.input
+        render(window); // level.render(window)
     }
 
     window.cleanUp();
     SDL_Quit();
+}
+
+void Game::update()
+{
+}
+
+void Game::input()
+{
+    SDL_PollEvent(&event);
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        isRunning = false;
+        break;
+    }
+    player.handleInput(event);
+}
+
+void Game::render(RenderWindow &window)
+{
+    window.screenClear();
+    window.renderer(player);
+    // level.render(window) -> this method will render the blocks, obsitcles and bg texture of the level.
+    window.display();
 }
