@@ -1,6 +1,10 @@
 #include "Sandblock.h"
-Sandblock::Sandblock()
+Sandblock::Sandblock(Vector2f pos, SDL_Texture *text)
 {
+    this->pos = pos;
+    this->texture = text;
+    gravity = 0;
+
     currentFrame.x = 0;
     currentFrame.y = 0;
     currentFrame.w = 46;
@@ -28,10 +32,10 @@ Vector2f &Sandblock::getPos()
 
 SDL_Rect Sandblock::getCurrentFrame()
 {
-    return SDL_Rect();
+    return currentFrame;
 }
 
 SDL_Texture *Sandblock::getTexture()
 {
-    return nullptr;
+    return texture;
 }

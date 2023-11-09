@@ -2,8 +2,8 @@
 #include <iostream>
 #include <SDL.h>
 #include "Math.h"
-
-class Block
+#include "Entity.h"
+class Block : public Entity
 {
 public:
     virtual void move() = 0;

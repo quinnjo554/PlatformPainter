@@ -24,9 +24,15 @@ void Level::input()
     case SDL_QUIT:
         isRunning = false;
         break;
+    case SDL_MOUSEBUTTONUP:
+        setMousePressed(false);
+        break;
+    case SDL_MOUSEBUTTONDOWN:
+        setMousePressed(true);
+        break;
     }
     this->player.handleInput(event);
-    this->dropBlock(event);
+    this->dropBlock();
 }
 
 void Level::update()
@@ -47,13 +53,17 @@ void Level::initializeTextures(RenderWindow &window)
     player.setTexture(playerText);
 }
 
-void Level::dropBlock(SDL_Event &event)
+void Level::dropBlock()
 {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
 
-    // Do something with mouseX and mouseY, for example, print them
-    std::cout << "Mouse X: " << mouseX << ", Y: " << mouseY << std::endl;
+    if (getIsMousePressed() && sandBlocks.size() < 50)
+    {
+        sandBlocks.push_back(std::make_shared<Sandblock>(Vector2f(mouseX, mouseY), playerText));
+        std::cout << sandBlocks.size() << "\n";
+        std::cout << "Mouse X: " << mouseX << ", Y: " << mouseY << std::endl;
+    }
 }
 // Getters
 const std::vector<std::shared_ptr<Sandblock>> &Level::getSandBlocks()
@@ -89,6 +99,11 @@ const Vector2f &Level::getGoalPos()
 bool Level::getIsRunning()
 {
     return isRunning;
+}
+
+bool Level::getIsMousePressed()
+{
+    return mousePressed;
 }
 
 SDL_Texture *Level::getPlayerText()
@@ -154,4 +169,9 @@ void Level::setBackground(SDL_Texture *bg)
 void Level::setPlayer(const Player &p)
 {
     player = p;
+}
+
+void Level::setMousePressed(bool isPressed)
+{
+    mousePressed = isPressed;
 }

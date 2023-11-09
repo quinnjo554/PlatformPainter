@@ -1,3 +1,4 @@
+#pragma once
 #include "Block.h"
 #include "SDL.h"
 #include "Math.h"
@@ -10,7 +11,7 @@ private:
     SDL_Rect currentFrame;
 
 public:
-    Sandblock();
+    Sandblock(Vector2f pos, SDL_Texture *text); // change
     void move() override;
     bool checkCollision(SDL_Rect a, SDL_Rect b) override;
     float getGravity() override;

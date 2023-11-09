@@ -21,7 +21,7 @@ public:
     void update();
     void render(RenderWindow &window);
     void initializeTextures(RenderWindow &window);
-    void dropBlock(SDL_Event &event);
+    void dropBlock();
     // Getters
     const std::vector<std::shared_ptr<Sandblock>> &getSandBlocks();
     const std::vector<std::shared_ptr<Stoneblock>> &getStoneBlocks();
@@ -30,6 +30,7 @@ public:
     bool getIsCompleted();
     const Vector2f &getGoalPos();
     bool getIsRunning();
+    bool getIsMousePressed();
     SDL_Texture *getPlayerText();
     SDL_Texture *getBackground();
     const Player &getPlayer();
@@ -45,6 +46,7 @@ public:
     void setPlayerText(SDL_Texture *text);
     void setBackground(SDL_Texture *bg);
     void setPlayer(const Player &p);
+    void setMousePressed(bool isPressed);
 
 private:
     std::vector<std::shared_ptr<Sandblock>> sandBlocks;
@@ -54,6 +56,7 @@ private:
     // std::vector<Enemy> enemies;      // List of enemies in the level
     // std::vector<Obstacle> obstacles; // List of obstacles in the level
     bool isCompleted;
+    bool mousePressed = false;
     Vector2f goalPos; // Position of the goal in the level
     bool isRunning = true;
     SDL_Event event;
