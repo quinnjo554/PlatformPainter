@@ -1,15 +1,50 @@
 #include "Level.h"
 
-void Level::run()
+Level::Level()
+    : player(playerText, Vector2f(400, 750))
 {
 }
 
-Level::Level()
+void Level::run(RenderWindow &window)
 {
+    initializeTextures(window);
+    while (isRunning)
+    {
+        this->input();
+        this->update();
+        this->render(window);
+    }
+}
+
+void Level::input()
+{
+    SDL_PollEvent(&event);
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        isRunning = false;
+        break;
+    }
+    this->player.handleInput(event);
+    this->dropBlock(event);
+}
+
+void Level::update()
+{
+}
+
+void Level::render(RenderWindow &window)
+{
+    window.screenClear();
+    window.renderer(player); // take in a player so we can update score and other things
+    // render obstivles and enemies as needed here
+    window.display();
 }
 
 void Level::initializeTextures(RenderWindow &window)
 {
+    playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
+    player.setTexture(playerText);
 }
 
 void Level::dropBlock(SDL_Event &event)

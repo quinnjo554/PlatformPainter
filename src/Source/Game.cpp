@@ -5,16 +5,11 @@ Game::Game() : player(playerText, Vector2f(400, 750))
     // Initialize other members here if needed
 }
 
-void Game::initializeTextures(RenderWindow &window) // move to level
-{
-    playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
-    player.setTexture(playerText);
-}
+// make a menu screen class
 
 void Game::run()
 {
-    // change to handleinput()  render() update()
-
+    player.setPos(Vector2f(100, 100));
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
     {
         std::cout << "SDL_INIT HAS FAILED: " << SDL_GetError() << std::endl; // get error returns the last error that has occured
@@ -23,16 +18,10 @@ void Game::run()
     { // if you want to change file type do it here
         std::cout << "IMG_init HAS FAILED: " << SDL_GetError() << std::endl;
     }
-    RenderWindow window("Game", 800, 800);
-    initializeTextures(window);
+    RenderWindow window("Game", 900, 900);
+    // if start game is selected
 
-    while (isRunning)
-    {
-        update();       // level.update
-        input();        // level.input
-        render(window); // level.render(window)
-    }
-
+    level.run(window);
     window.cleanUp();
     SDL_Quit();
 }
@@ -57,6 +46,6 @@ void Game::render(RenderWindow &window)
 {
     window.screenClear();
     window.renderer(player);
-    // level.render(window) -> this method will render the blocks, obsitcles and bg texture of the level.
+    level.render(window);
     window.display();
 }
