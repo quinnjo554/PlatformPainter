@@ -17,6 +17,7 @@ public:
     Player();
     Player(SDL_Texture *texture, Vector2f pos);
     void handleInput(SDL_Event &event);
+    void setPos(Vector2f pos);
     Vector2f &getPos();
     void setTexture(SDL_Texture *texture);
     SDL_Rect getCurrentFrame();

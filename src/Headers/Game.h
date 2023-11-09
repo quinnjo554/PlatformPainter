@@ -22,5 +22,6 @@ private:
     SDL_Texture *playerText;
     Player player;
     Level level;
-    void initializeTextures(RenderWindow &window);
+    void initializePlayer(RenderWindow &window);
+    // add score board and ui
 };

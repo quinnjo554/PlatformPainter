@@ -16,10 +16,12 @@ class Level
 {
 public:
     Level();
-    void run();
+    void run(RenderWindow &window);
+    void input();
+    void update();
+    void render(RenderWindow &window);
     void initializeTextures(RenderWindow &window);
     void dropBlock(SDL_Event &event);
-
     // Getters
     const std::vector<std::shared_ptr<Sandblock>> &getSandBlocks();
     const std::vector<std::shared_ptr<Stoneblock>> &getStoneBlocks();
