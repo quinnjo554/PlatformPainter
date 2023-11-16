@@ -45,6 +45,11 @@ void Player::handleInput(SDL_Event &event)
     pos.x += velocity;
 }
 
+void Player::setPos(Vector2f pos)
+{
+    this->pos = pos;
+}
+
 Vector2f &Player::getPos()
 {
     return this->pos;

@@ -8,10 +8,10 @@
 // interface
 class Entity
 {
-private:
 public:
     // moves
-    virtual void handleInput(SDL_Event &event) = 0;
+    // virtual void handleInput(SDL_Event &event) = 0;
+    virtual ~Entity(){};
     virtual Vector2f &getPos() = 0;
     virtual SDL_Rect getCurrentFrame() = 0;
     // returns the texture pointer

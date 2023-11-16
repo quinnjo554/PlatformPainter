@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "Entity.h"
+#include "Player.h"
 #include <SDL.h>
 
 class RenderWindow
@@ -18,8 +19,7 @@ public:
     SDL_Texture *loadTexture(const char *p_pathFile);
     void screenClear();
 
-    void renderer(Entity &pE);
-
+    void renderer(Entity &e);
     void display();
 
     SDL_Window *getWindow();
