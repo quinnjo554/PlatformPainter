@@ -42,15 +42,14 @@ void Level::update()
 void Level::render(RenderWindow &window)
 {
     window.screenClear();
-    window.renderer(player); // take in a player so we can update score and other things
-    // render obstivles and enemies as needed here
+    window.renderer(player); // take in a player so we can update score and other things              // render obstivles and enemies as needed here
     window.display();
 }
 
 void Level::initializeTextures(RenderWindow &window)
 {
-    playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg");
-    player.setTexture(playerText);
+    playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg"); // change to relative path
+    this->player.setTexture(playerText);
 }
 
 void Level::dropBlock()
@@ -58,7 +57,7 @@ void Level::dropBlock()
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
 
-    if (getIsMousePressed() && sandBlocks.size() < 50)
+    if (getIsMousePressed() && this->sandBlocks.size() < 50)
     {
         sandBlocks.push_back(std::make_shared<Sandblock>(Vector2f(mouseX, mouseY), playerText));
         std::cout << sandBlocks.size() << "\n";
@@ -78,100 +77,100 @@ const std::vector<std::shared_ptr<Stoneblock>> &Level::getStoneBlocks()
 
 const std::vector<std::shared_ptr<Lavablock>> &Level::getLavaBlocks()
 {
-    return lavaBlocks;
+    return this->lavaBlocks;
 }
 
 const std::vector<std::shared_ptr<Portalblock>> &Level::getPortalBlocks()
 {
-    return portalBlocks;
+    return this->portalBlocks;
 }
 
 bool Level::getIsCompleted()
 {
-    return isCompleted;
+    return this->isCompleted;
 }
 
 const Vector2f &Level::getGoalPos()
 {
-    return goalPos;
+    return this->goalPos;
 }
 
 bool Level::getIsRunning()
 {
-    return isRunning;
+    return this->isRunning;
 }
 
 bool Level::getIsMousePressed()
 {
-    return mousePressed;
+    return this->mousePressed;
 }
 
 SDL_Texture *Level::getPlayerText()
 {
-    return playerText;
+    return this->playerText;
 }
 
 SDL_Texture *Level::getBackground()
 {
-    return background;
+    return this->background;
 }
 
-const Player &Level::getPlayer()
+Player &Level::getPlayer()
 {
-    return player;
+    return this->player;
 }
 
 // Setters
 void Level::setSandBlocks(const std::vector<std::shared_ptr<Sandblock>> &blocks)
 {
-    sandBlocks = blocks;
+    this->sandBlocks = blocks;
 }
 
 void Level::setStoneBlocks(const std::vector<std::shared_ptr<Stoneblock>> &blocks)
 {
-    stoneBlocks = blocks;
+    this->stoneBlocks = blocks;
 }
 
 void Level::setLavaBlocks(const std::vector<std::shared_ptr<Lavablock>> &blocks)
 {
-    lavaBlocks = blocks;
+    this->lavaBlocks = blocks;
 }
 
 void Level::setPortalBlocks(const std::vector<std::shared_ptr<Portalblock>> &blocks)
 {
-    portalBlocks = blocks;
+    this->portalBlocks = blocks;
 }
 void Level::setIsCompleted(bool completed)
 {
-    isCompleted = completed;
+    this->isCompleted = completed;
 }
 
 void Level::setGoalPos(const Vector2f &pos)
 {
-    goalPos = pos;
+    this->goalPos = pos;
 }
 
 void Level::setIsRunning(bool running)
 {
-    isRunning = running;
+    this->isRunning = running;
 }
 
 void Level::setPlayerText(SDL_Texture *text)
 {
-    playerText = text;
+    this->playerText = text;
 }
 
 void Level::setBackground(SDL_Texture *bg)
 {
-    background = bg;
+    this->background = bg;
 }
 
 void Level::setPlayer(const Player &p)
 {
-    player = p;
+    this->player = p;
 }
 
 void Level::setMousePressed(bool isPressed)
 {
-    mousePressed = isPressed;
+    this->mousePressed = isPressed;
 }

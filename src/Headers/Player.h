@@ -2,7 +2,6 @@
 #include <SDL.h>
 #include <iostream>
 #include <string.h>
-#include "RenderWindow.h"
 #include "Entity.h"
 #include "Math.h"
 

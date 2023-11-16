@@ -15,7 +15,7 @@ public:
     void move() override;
     bool checkCollision(SDL_Rect a, SDL_Rect b) override;
     float getGravity() override;
-    Vector2f &getPos() override;
-    SDL_Rect getCurrentFrame() override;
-    SDL_Texture *getTexture() override;
+    Vector2f &getPos();
+    SDL_Rect getCurrentFrame();
+    SDL_Texture *getTexture();
 };

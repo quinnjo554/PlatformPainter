@@ -18,9 +18,8 @@ void Game::run()
     { // if you want to change file type do it here
         std::cout << "IMG_init HAS FAILED: " << SDL_GetError() << std::endl;
     }
-    RenderWindow window("Game", 900, 900);
+    RenderWindow window("Game", 800, 800);
     // if start game is selected
-
     level.run(window);
     window.cleanUp();
     SDL_Quit();
@@ -45,7 +44,7 @@ void Game::input()
 void Game::render(RenderWindow &window)
 {
     window.screenClear();
-    window.renderer(player);
-    level.render(window);
+    // window.renderer(player);
+    // level.render(window);
     window.display();
 }

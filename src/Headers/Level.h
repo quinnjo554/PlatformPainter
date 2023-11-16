@@ -33,7 +33,7 @@ public:
     bool getIsMousePressed();
     SDL_Texture *getPlayerText();
     SDL_Texture *getBackground();
-    const Player &getPlayer();
+    Player &getPlayer();
 
     // Setters
     void setSandBlocks(const std::vector<std::shared_ptr<Sandblock>> &blocks);
@@ -49,6 +49,7 @@ public:
     void setMousePressed(bool isPressed);
 
 private:
+    Player player;
     std::vector<std::shared_ptr<Sandblock>> sandBlocks;
     std::vector<std::shared_ptr<Stoneblock>> stoneBlocks;
     std::vector<std::shared_ptr<Lavablock>> lavaBlocks;
@@ -62,5 +63,4 @@ private:
     SDL_Event event;
     SDL_Texture *playerText;
     SDL_Texture *background;
-    Player player;
 };

@@ -69,9 +69,9 @@ void RenderWindow::screenClear()
 {
     SDL_RenderClear(render);
 }
-
 void RenderWindow::renderer(Entity &e)
 {
+
     SDL_Rect source;
     source.x = e.getCurrentFrame().x;
     source.y = e.getCurrentFrame().y;
@@ -80,11 +80,10 @@ void RenderWindow::renderer(Entity &e)
 
     SDL_Rect destination;
     destination.x = static_cast<int>(e.getPos().x);
-    destination.y = static_cast<int>(e.getPos().y); // multiply by a scale for zoom: all by scale
+    destination.y = static_cast<int>(e.getPos().y);
     destination.w = e.getCurrentFrame().w / 2;
     destination.h = e.getCurrentFrame().h / 2;
 
-    // make a angle field in entity and place it in here
     SDL_RenderCopy(render, e.getTexture(), &source, &destination);
 }
 

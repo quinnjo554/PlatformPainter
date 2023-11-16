@@ -8,11 +8,6 @@ Stoneblock::Stoneblock()
     currentFrame.h = 64;
 }
 
-void Stoneblock::handleInput(SDL_Event &event)
-{
-    this->getPos();
-}
-
 Vector2f &Stoneblock::getPos()
 {
     return this->pos;
