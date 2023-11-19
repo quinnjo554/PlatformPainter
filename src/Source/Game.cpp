@@ -1,15 +1,17 @@
 #include "Game.h"
 
-Game::Game() : player(playerText, Vector2f(400, 750))
+Game::Game()
 {
     // Initialize other members here if needed
 }
 
 // make a menu screen class
-
+// implement framerate
 void Game::run()
 {
-    player.setPos(Vector2f(100, 100));
+    // game should take care of fps
+    // game needs to have the loop
+    // think abut trade off's with having obsitcles and enemies tied to Level
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
     {
         std::cout << "SDL_INIT HAS FAILED: " << SDL_GetError() << std::endl; // get error returns the last error that has occured
@@ -20,31 +22,12 @@ void Game::run()
     }
     RenderWindow window("Game", 800, 800);
     // if start game is selected
-    level.run(window);
+    while (isRunning)
+    {
+        // check for quit input
+        // init Level with a overall gave scope Player
+        level.run(window);
+    }
     window.cleanUp();
     SDL_Quit();
-}
-
-void Game::update()
-{
-}
-
-void Game::input()
-{
-    SDL_PollEvent(&event);
-    switch (event.type)
-    {
-    case SDL_QUIT:
-        isRunning = false;
-        break;
-    }
-    player.handleInput(event);
-}
-
-void Game::render(RenderWindow &window)
-{
-    window.screenClear();
-    // window.renderer(player);
-    // level.render(window);
-    window.display();
 }

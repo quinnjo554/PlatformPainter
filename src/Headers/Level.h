@@ -15,8 +15,8 @@
 class Level
 {
 public:
-    Level();
-    void run(RenderWindow &window);
+    Level(Player player);
+    void run(RenderWindow &window, bool &isRunning);
     void input();
     void update();
     void render(RenderWindow &window);
@@ -61,6 +61,7 @@ private:
     Vector2f goalPos; // Position of the goal in the level
     bool isRunning = true;
     SDL_Event event;
+    SDL_Event playerEvent;
     SDL_Texture *playerText;
     SDL_Texture *background;
 };

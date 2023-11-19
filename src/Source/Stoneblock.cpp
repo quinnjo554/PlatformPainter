@@ -15,12 +15,12 @@ Vector2f &Stoneblock::getPos()
 
 SDL_Rect Stoneblock::getCurrentFrame()
 {
-    return SDL_Rect();
+    return this->currentFrame;
 }
 
 SDL_Texture *Stoneblock::getTexture()
 {
-    return nullptr;
+    return this->texture;
 }
 
 void Stoneblock::move()

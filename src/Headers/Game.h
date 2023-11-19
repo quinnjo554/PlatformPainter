@@ -11,17 +11,13 @@ class Game
 {
 public:
     void run();
-    void update();
-    void input();
-    void render(RenderWindow &window);
     Game();
 
 private:
     bool isRunning = true;
     SDL_Event event;
     SDL_Texture *playerText;
-    Player player;
     Level level;
-    void initializePlayer(RenderWindow &window);
+    Player player;
     // add score board and ui
 };

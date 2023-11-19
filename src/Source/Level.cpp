@@ -1,19 +1,16 @@
 #include "Level.h"
 
-Level::Level()
-    : player(playerText, Vector2f(400, 750))
+Level::Level(Player player)
+    : player(player)
 {
 }
 
 void Level::run(RenderWindow &window)
 {
     initializeTextures(window);
-    while (isRunning)
-    {
-        this->input();
-        this->update();
-        this->render(window);
-    }
+    this->input();
+    this->update();
+    this->render(window);
 }
 
 void Level::input()
@@ -57,7 +54,7 @@ void Level::dropBlock()
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
 
-    if (getIsMousePressed() && this->sandBlocks.size() < 50)
+    if (getIsMousePressed())
     {
         sandBlocks.push_back(std::make_shared<Sandblock>(Vector2f(mouseX, mouseY), playerText));
         std::cout << sandBlocks.size() << "\n";
