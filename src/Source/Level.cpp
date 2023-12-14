@@ -1,25 +1,29 @@
 #include "Level.h"
 
-Level::Level(Player player)
+Level::Level(Player &player)
     : player(player)
 {
 }
-
-void Level::run(RenderWindow &window)
+void Level::run(RenderWindow &window, bool &isRunning)
 {
+
     initializeTextures(window);
-    this->input();
-    this->update();
-    this->render(window);
+    if (!this->getIsCompleted())
+    {
+        this->input(isRunning);
+        this->update();
+        this->render(window);
+    }
 }
 
-void Level::input()
+void Level::input(bool &isRunning)
 {
     SDL_PollEvent(&event);
     switch (event.type)
     {
     case SDL_QUIT:
-        isRunning = false;
+        isRunning = false; // change to level complete condition
+        setIsCompleted(true);
         break;
     case SDL_MOUSEBUTTONUP:
         setMousePressed(false);
@@ -34,19 +38,23 @@ void Level::input()
 
 void Level::update()
 {
+    // check for collisions
+    // Game logic
+    // Animations
 }
 
 void Level::render(RenderWindow &window)
 {
     window.screenClear();
-    window.renderer(player); // take in a player so we can update score and other things              // render obstivles and enemies as needed here
+    window.renderer(player); // take in a player so we can update score and other things
     window.display();
 }
 
+/**
+ * init enemies and obstacles
+ */
 void Level::initializeTextures(RenderWindow &window)
 {
-    playerText = window.loadTexture("C:\\Users\\quinn\\Desktop\\sdl\\PlatformPainter\\res\\pink.jpg"); // change to relative path
-    this->player.setTexture(playerText);
 }
 
 void Level::dropBlock()
@@ -58,10 +66,10 @@ void Level::dropBlock()
     {
         sandBlocks.push_back(std::make_shared<Sandblock>(Vector2f(mouseX, mouseY), playerText));
         std::cout << sandBlocks.size() << "\n";
-        std::cout << "Mouse X: " << mouseX << ", Y: " << mouseY << std::endl;
+        std::cout << "Mouse X: " << player.getPos().x << ", Y: " << mouseY << std::endl;
     }
 }
-// Getters
+
 const std::vector<std::shared_ptr<Sandblock>> &Level::getSandBlocks()
 {
     return this->sandBlocks;
@@ -92,11 +100,6 @@ const Vector2f &Level::getGoalPos()
     return this->goalPos;
 }
 
-bool Level::getIsRunning()
-{
-    return this->isRunning;
-}
-
 bool Level::getIsMousePressed()
 {
     return this->mousePressed;
@@ -117,7 +120,6 @@ Player &Level::getPlayer()
     return this->player;
 }
 
-// Setters
 void Level::setSandBlocks(const std::vector<std::shared_ptr<Sandblock>> &blocks)
 {
     this->sandBlocks = blocks;
@@ -145,11 +147,6 @@ void Level::setIsCompleted(bool completed)
 void Level::setGoalPos(const Vector2f &pos)
 {
     this->goalPos = pos;
-}
-
-void Level::setIsRunning(bool running)
-{
-    this->isRunning = running;
 }
 
 void Level::setPlayerText(SDL_Texture *text)
