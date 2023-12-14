@@ -25,10 +25,10 @@ void Player::handleInput(SDL_Event &event)
         switch (event.key.keysym.sym) // Check which key was pressed
         {
         case SDLK_LEFT:
-            velocity = -6.0f;
+            velocity = -7.0f;
             break;
         case SDLK_RIGHT:
-            velocity = 6.0f;
+            velocity = 7.0f;
             break;
         }
     }

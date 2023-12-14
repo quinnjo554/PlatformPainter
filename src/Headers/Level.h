@@ -15,9 +15,9 @@
 class Level
 {
 public:
-    Level(Player player);
+    Level(Player &player);
     void run(RenderWindow &window, bool &isRunning);
-    void input();
+    void input(bool &isRunning);
     void update();
     void render(RenderWindow &window);
     void initializeTextures(RenderWindow &window);
@@ -29,7 +29,6 @@ public:
     const std::vector<std::shared_ptr<Portalblock>> &getPortalBlocks();
     bool getIsCompleted();
     const Vector2f &getGoalPos();
-    bool getIsRunning();
     bool getIsMousePressed();
     SDL_Texture *getPlayerText();
     SDL_Texture *getBackground();
@@ -42,24 +41,22 @@ public:
     void setPortalBlocks(const std::vector<std::shared_ptr<Portalblock>> &blocks);
     void setIsCompleted(bool completed);
     void setGoalPos(const Vector2f &pos);
-    void setIsRunning(bool running);
     void setPlayerText(SDL_Texture *text);
     void setBackground(SDL_Texture *bg);
     void setPlayer(const Player &p);
     void setMousePressed(bool isPressed);
 
 private:
-    Player player;
+    Player &player;
     std::vector<std::shared_ptr<Sandblock>> sandBlocks;
     std::vector<std::shared_ptr<Stoneblock>> stoneBlocks;
     std::vector<std::shared_ptr<Lavablock>> lavaBlocks;
     std::vector<std::shared_ptr<Portalblock>> portalBlocks;
     // std::vector<Enemy> enemies;      // List of enemies in the level
     // std::vector<Obstacle> obstacles; // List of obstacles in the level
-    bool isCompleted;
+    bool isCompleted = false;
     bool mousePressed = false;
     Vector2f goalPos; // Position of the goal in the level
-    bool isRunning = true;
     SDL_Event event;
     SDL_Event playerEvent;
     SDL_Texture *playerText;

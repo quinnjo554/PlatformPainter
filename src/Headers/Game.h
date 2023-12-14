@@ -12,6 +12,7 @@ class Game
 public:
     void run();
     Game();
+    void initPlayer(RenderWindow &window);
 
 private:
     bool isRunning = true;
@@ -19,5 +20,6 @@ private:
     SDL_Texture *playerText;
     Level level;
     Player player;
+
     // add score board and ui
 };
