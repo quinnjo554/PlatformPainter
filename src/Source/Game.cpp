@@ -32,10 +32,10 @@ void Game::run()
     int startTime = SDL_GetTicks();
     int fps = 60;
     int desiredDelta = 1000 / fps;
+
     while (isRunning)
     {
         level.run(window, isRunning);
-        std::cout << desiredDelta << "\n";
         int delta = SDL_GetTicks() - startTime;
         if (delta < desiredDelta)
         {
